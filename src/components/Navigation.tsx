@@ -28,10 +28,10 @@ const Navigation = () => {
               about
             </Link>
             <Link to="/people" className="nav-link">
-              people
+              skills
             </Link>
             <Link to="/expertise" className="nav-link">
-              expertise
+              work
             </Link>
             <Link to="/connect" className="nav-link">
               connect
