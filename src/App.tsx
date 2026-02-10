@@ -10,6 +10,7 @@ import FigmaCase from "./pages/FigmaCase";
 import NotionCase from "./pages/NotionCase";
 import People from "./pages/People";
 import Expertise from "./pages/Expertise";
+import ProjectDetail from "./pages/ProjectDetail";
 import Connect from "./pages/Connect";
 import NotFound from "./pages/NotFound";
 
@@ -29,6 +30,7 @@ const App = () => (
           <Route path="/notion" element={<NotionCase />} />
           <Route path="/people" element={<People />} />
           <Route path="/expertise" element={<Expertise />} />
+          <Route path="/work/:slug" element={<ProjectDetail />} />
           <Route path="/connect" element={<Connect />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
