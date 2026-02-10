@@ -1,33 +1,44 @@
 import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
-interface ExpertiseArea {
+interface WorkItem {
   title: string;
   description: string;
-  services: string[];
+  role: string;
+  year: string;
+  link?: string;
 }
 
-const expertiseAreas: ExpertiseArea[] = [
+const workItems: WorkItem[] = [
   {
-    title: "Product Design",
-    description: "End-to-end product design from discovery to delivery. Creating intuitive interfaces that users love.",
-    services: ["User Research", "Interaction Design", "Prototyping", "Usability Testing", "Design Systems"],
+    title: "Verve",
+    description: "Led the redesign of the core product experience, improving user engagement by 40%.",
+    role: "Design Director",
+    year: "2024–Present",
+    link: "/verve",
   },
   {
-    title: "Brand Identity",
-    description: "Building memorable brands that stand out. From visual identity to voice and tone.",
-    services: ["Logo Design", "Visual Identity", "Brand Guidelines", "Art Direction", "Naming"],
+    title: "Spotify",
+    description: "Designed key features for the mobile and desktop listening experience across millions of users.",
+    role: "Staff Designer",
+    year: "2020–2024",
+    link: "/spotify",
   },
   {
-    title: "Motion Design",
-    description: "Bringing interfaces and stories to life through thoughtful animation and movement.",
-    services: ["UI Animation", "Micro-interactions", "Motion Systems", "Video Production", "3D Animation"],
+    title: "Figma",
+    description: "Built and scaled the design system used across all Figma product surfaces.",
+    role: "Senior Designer",
+    year: "2016–2020",
+    link: "/figma",
   },
   {
-    title: "Creative Direction",
-    description: "Leading creative vision across projects. Ensuring cohesive experiences at every touchpoint.",
-    services: ["Creative Strategy", "Campaign Direction", "Visual Storytelling", "Team Leadership", "Client Collaboration"],
+    title: "Notion",
+    description: "Shaped the early product design language and helped establish the brand identity.",
+    role: "Senior Designer",
+    year: "2012–2016",
+    link: "/notion",
   },
 ];
 
@@ -43,7 +54,7 @@ const Expertise = () => {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="heading-display text-5xl md:text-6xl lg:text-7xl mb-8"
           >
-            Expertise
+            Work
           </motion.h1>
 
           <motion.p
@@ -52,36 +63,35 @@ const Expertise = () => {
             transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             className="font-serif text-xl md:text-2xl text-muted-foreground mb-20 leading-relaxed"
           >
-            We bring together diverse skills and perspectives to solve complex design challenges with clarity and purpose.
+            A selection of projects and roles that have shaped my craft over the years.
           </motion.p>
 
-          <div className="flex flex-col gap-16">
-            {expertiseAreas.map((area, index) => (
-              <motion.div
-                key={area.title}
+          <div className="flex flex-col gap-0">
+            {workItems.map((item, index) => (
+              <motion.a
+                key={item.title}
+                href={item.link}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.5, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                className="border-b border-foreground/10 pb-12"
+                className="group border-b border-foreground/10 py-10 block cursor-pointer hover:bg-[hsl(var(--surface-active))] transition-colors duration-200 px-4 -mx-4"
               >
-                <h3 className="font-serif text-3xl md:text-4xl text-foreground mb-4">
-                  {area.title}
-                </h3>
-                <p className="font-serif text-lg text-muted-foreground leading-relaxed mb-6">
-                  {area.description}
-                </p>
-                <div className="flex flex-wrap gap-3">
-                  {area.services.map((service) => (
-                    <span
-                      key={service}
-                      className="text-sm text-primary border border-primary/30 px-3 py-1 rounded-full"
-                    >
-                      {service}
-                    </span>
-                  ))}
+                <div className="flex items-start justify-between mb-2">
+                  <h3 className="font-serif text-3xl md:text-4xl text-foreground">
+                    {item.title}
+                  </h3>
+                  <ArrowUpRight className="w-5 h-5 text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-200 mt-2" />
                 </div>
-              </motion.div>
+                <div className="flex items-center gap-3 text-sm text-muted-foreground mb-3">
+                  <span>{item.year}</span>
+                  <span className="text-muted-foreground/40">·</span>
+                  <span>{item.role}</span>
+                </div>
+                <p className="font-serif text-muted-foreground leading-relaxed">
+                  {item.description}
+                </p>
+              </motion.a>
             ))}
           </div>
         </div>

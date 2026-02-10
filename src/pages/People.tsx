@@ -2,42 +2,31 @@ import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
-interface TeamMember {
-  name: string;
-  role: string;
-  bio: string;
+interface SkillCategory {
+  title: string;
+  skills: string[];
 }
 
-const team: TeamMember[] = [
+const skillCategories: SkillCategory[] = [
   {
-    name: "Maya Chen",
-    role: "Founder & Design Director",
-    bio: "Over a decade of experience crafting digital products and brands. Previously at Verve, Spotify, Figma, and Notion.",
+    title: "Languages & Core",
+    skills: ["TypeScript", "JavaScript", "HTML5", "CSS3", "Python"],
   },
   {
-    name: "Elena Rodriguez",
-    role: "Senior Product Designer",
-    bio: "Specialist in user experience and interaction design. Passionate about accessible design that works for everyone.",
+    title: "Frameworks & Libraries",
+    skills: ["React", "Next.js", "Vue.js", "Tailwind CSS", "Framer Motion"],
   },
   {
-    name: "James Liu",
-    role: "Motion Designer",
-    bio: "Bringing interfaces to life through thoughtful animation. Background in film and digital arts.",
+    title: "Tools & Workflow",
+    skills: ["Git", "Figma", "Vite", "Webpack", "Docker"],
   },
   {
-    name: "Sarah Kim",
-    role: "Brand Designer",
-    bio: "Creating cohesive visual identities that resonate. Previously at Nike and Apple.",
+    title: "Testing & Quality",
+    skills: ["Jest", "Vitest", "Cypress", "Playwright", "Storybook"],
   },
   {
-    name: "Marcus Webb",
-    role: "Design Engineer",
-    bio: "Bridging design and development. Building design systems that scale.",
-  },
-  {
-    name: "Priya Patel",
-    role: "UX Researcher",
-    bio: "Understanding users through empathy and data. Making design decisions grounded in research.",
+    title: "Backend & APIs",
+    skills: ["Node.js", "REST APIs", "GraphQL", "Supabase", "Firebase"],
   },
 ];
 
@@ -53,7 +42,7 @@ const People = () => {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="heading-display text-5xl md:text-6xl lg:text-7xl mb-8"
           >
-            People
+            Skills
           </motion.h1>
 
           <motion.p
@@ -62,26 +51,32 @@ const People = () => {
             transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             className="font-serif text-xl md:text-2xl text-muted-foreground mb-20 leading-relaxed"
           >
-            A small team of passionate designers, researchers, and engineers working together to craft exceptional experiences.
+            Front-end developer with a passion for building performant, accessible, and beautiful web experiences.
           </motion.p>
 
-          <div className="flex flex-col gap-12">
-            {team.map((member, index) => (
+          <div className="flex flex-col gap-16">
+            {skillCategories.map((category, index) => (
               <motion.div
-                key={member.name}
+                key={category.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.5, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                className="border-b border-foreground/10 pb-8"
+                className="border-b border-foreground/10 pb-10"
               >
-                <h3 className="font-serif text-2xl md:text-3xl text-foreground mb-2">
-                  {member.name}
+                <h3 className="font-serif text-2xl md:text-3xl text-foreground mb-6">
+                  {category.title}
                 </h3>
-                <p className="text-primary text-sm mb-4">{member.role}</p>
-                <p className="font-serif text-muted-foreground leading-relaxed">
-                  {member.bio}
-                </p>
+                <div className="flex flex-wrap gap-3">
+                  {category.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="text-sm text-primary border border-primary/30 px-4 py-1.5 rounded-full"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </motion.div>
             ))}
           </div>
