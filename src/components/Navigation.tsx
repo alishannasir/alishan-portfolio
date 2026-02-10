@@ -24,7 +24,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between">
           {/* Navigation Links */}
           <div className="flex items-center gap-12 text-sm tracking-wide">
-            <Link to="/" className="nav-link">
+            <Link to="/about" className="nav-link">
               about
             </Link>
             <Link to="/people" className="nav-link">
