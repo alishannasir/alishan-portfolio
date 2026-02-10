@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Maya Chen Portfolio - Warm Elegant Theme */
+    --background: 30 25% 94%;
+    --foreground: 0 0% 15%;
+
+    --card: 30 25% 94%;
+    --card-foreground: 0 0% 15%;
+
+    --popover: 30 25% 94%;
+    --popover-foreground: 0 0% 15%;
+
+    --primary: 0 72% 51%;
+    --primary-foreground: 30 25% 94%;
+
+    --secondary: 30 15% 88%;
+    --secondary-foreground: 0 0% 15%;
+
+    --muted: 30 15% 88%;
+    --muted-foreground: 0 0% 40%;
+
+    --accent: 0 72% 51%;
+    --accent-foreground: 30 25% 94%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 15% / 0.1;
+    --input: 0 0% 15% / 0.1;
+    --ring: 0 72% 51% / 0.3;
+
+    --radius: 0.25rem;
+
+    /* Custom semantic tokens */
+    --text-primary: 0 0% 15%;
+    --text-secondary: 0 0% 40%;
+    --text-muted: 0 0% 55%;
+    --text-tertiary: 0 0% 50%;
+    
+    --link-red: 0 72% 51%;
+    --link-red-hover: 0 72% 45%;
+    
+    --surface-hover: 0 0% 0% / 0.03;
+    --surface-active: 0 0% 0% / 0.05;
+    
+    --border-subtle: 0 0% 15% / 0.05;
+    --border-default: 0 0% 15% / 0.1;
+
+    --sidebar-background: 30 25% 94%;
+    --sidebar-foreground: 0 0% 15%;
+    --sidebar-primary: 0 72% 51%;
+    --sidebar-primary-foreground: 30 25% 94%;
+    --sidebar-accent: 30 15% 88%;
+    --sidebar-accent-foreground: 0 0% 15%;
+    --sidebar-border: 0 0% 15% / 0.1;
+    --sidebar-ring: 0 72% 51% / 0.3;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+}
+
+@layer components {
+  .section-header {
+    @apply text-sm font-medium text-primary mb-16 tracking-widest lowercase;
+  }
+  
+  .section-container {
+    @apply max-w-4xl mx-auto px-8 py-32;
+  }
+  
+  .body-text {
+    @apply text-[22px] md:text-[28px] leading-relaxed text-foreground font-serif;
+  }
+  
+  .body-emphasis {
+    @apply font-medium text-primary;
+  }
+  
+  .experience-card {
+    @apply flex items-center gap-6 px-4 py-4 transition-all duration-200 cursor-pointer border-b border-border;
+    @apply hover:bg-[hsl(var(--surface-active))];
+  }
+  
+  .experience-card-icon {
+    @apply w-10 h-10 rounded flex-shrink-0 border border-[hsl(var(--border-default))] overflow-hidden;
+  }
+  
+  .link-external {
+    @apply text-primary font-medium;
+    @apply hover:text-[hsl(var(--link-red-hover))] transition-colors duration-200;
+  }
+  
+  .nav-link {
+    @apply text-muted-foreground hover:text-primary transition-colors duration-200 cursor-pointer lowercase tracking-wide;
+  }
+  
+  .font-serif {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+  
+  .heading-display {
+    @apply font-serif text-primary font-normal;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
