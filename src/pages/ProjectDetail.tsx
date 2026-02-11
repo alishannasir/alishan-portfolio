@@ -2,11 +2,14 @@ import { useParams, Navigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import ScrollZigzagLine from "@/components/ScrollZigzagLine";
+import { useScrollProgress } from "@/hooks/useScrollProgress";
 import { projects, projectImages, projectGallery } from "@/data/projects";
 
 const ProjectDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const project = projects.find((p) => p.slug === slug);
+  const scrollProgress = useScrollProgress();
 
   if (!project) return <Navigate to="/expertise" replace />;
 
@@ -15,6 +18,7 @@ const ProjectDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <ScrollZigzagLine variant="projectDetail" scrollProgress={scrollProgress} />
       <Navigation />
       <main className="min-h-screen pt-40 pb-24 px-8">
         <div className="max-w-3xl mx-auto">

@@ -2,13 +2,15 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import ScrollZigzagLine from "@/components/ScrollZigzagLine";
+import { useScrollProgress } from "@/hooks/useScrollProgress";
 import profileImage from "@/assets/shan.jpeg";
 
 const stats = [
-  { label: "Years Experience", value: "5+" },
-  { label: "Projects Delivered", value: "30+" },
+  { label: "Years Experience", value: "2+" },
+  { label: "Projects Delivered", value: "4+" },
   { label: "Technologies", value: "15+" },
-  { label: "Happy Clients", value: "20+" },
+  { label: "Happy Clients", value: "3+" },
 ];
 
 const values = [
@@ -31,8 +33,11 @@ const values = [
 ];
 
 const About = () => {
+  const scrollProgress = useScrollProgress();
+
   return (
     <div className="min-h-screen bg-background">
+      <ScrollZigzagLine variant="about" scrollProgress={scrollProgress} />
       <Navigation />
       <main className="min-h-screen">
         {/* Hero: small profile + headline */}

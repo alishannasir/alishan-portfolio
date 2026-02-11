@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Twitter, Mail } from "lucide-react";
+import { Github, Linkedin, Youtube, Globe } from "lucide-react";
 import HoverText from "@/components/HoverText";
 import profileImage from "@/assets/myimage.jpg";
 
 const socialLinks = [
-  { icon: <Github size={18} />, href: "https://github.com", label: "GitHub" },
-  { icon: <Linkedin size={18} />, href: "https://linkedin.com", label: "LinkedIn" },
-  { icon: <Twitter size={18} />, href: "https://twitter.com", label: "Twitter" },
-  { icon: <Mail size={18} />, href: "mailto:iamalishannasir@gmail.com", label: "Email" },
+  { icon: <Github size={18} />, href: "https://github.com/alishannasir", label: "GitHub" },
+  { icon: <Linkedin size={18} />, href: "https://www.linkedin.com/in/ali-shan-a85721272/", label: "LinkedIn" },
+  { icon: <Youtube size={18} />, href: "https://www.youtube.com/@alishan0206", label: "YouTube" },
+  { icon: <Globe size={18} />, href: "https://www.upwork.com/freelancers/~01108fa2a3313a6ad2", label: "Upwork" },
 ];
 
 const Footer = () => {
@@ -71,10 +71,10 @@ const Footer = () => {
             className="absolute bottom-0 left-0 text-sm md:text-base font-serif text-muted-foreground"
           >
             <a
-              href="mailto:iamalishannasir@gmail.com"
+              href="mailto:iamalishannasir@gamil.com"
               className="hover:text-primary transition-colors duration-200"
             >
-              <HoverText text="iamalishannasir@gmail.com" />
+              <HoverText text="iamalishannasir@gamil.com" />
             </a>
           </motion.div>
 

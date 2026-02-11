@@ -1,11 +1,25 @@
 import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { ArrowUpRight, Mail, MapPin } from "lucide-react";
+import ScrollZigzagLine from "@/components/ScrollZigzagLine";
+import { useScrollProgress } from "@/hooks/useScrollProgress";
+import { ArrowUpRight, Mail, MapPin, Github, Linkedin, Youtube, Globe } from "lucide-react";
+
+const contactLinks = [
+  { href: "mailto:iamalishannasir@gamil.com", label: "Email", text: "iamalishannasir@gamil.com", Icon: Mail },
+  { href: "https://github.com/alishannasir", label: "GitHub", text: "github.com/alishannasir", Icon: Github },
+  { href: "https://www.linkedin.com/in/ali-shan-a85721272/", label: "LinkedIn", text: "LinkedIn", Icon: Linkedin },
+  { href: "https://www.upwork.com/freelancers/~01108fa2a3313a6ad2", label: "Upwork", text: "Upwork", Icon: Globe },
+  { href: "https://www.youtube.com/@alishan0206", label: "YouTube", text: "YouTube", Icon: Youtube },
+  { href: "https://discord.com/channels/@me", label: "Discord", text: "Discord", Icon: Globe },
+];
 
 const Connect = () => {
+  const scrollProgress = useScrollProgress();
+
   return (
     <div className="min-h-screen bg-background">
+      <ScrollZigzagLine variant="connect" scrollProgress={scrollProgress} />
       <Navigation />
       <main className="min-h-screen pt-40 pb-24 px-8">
         <div className="max-w-3xl mx-auto">
@@ -35,40 +49,21 @@ const Connect = () => {
             >
               <h3 className="font-serif text-2xl text-foreground mb-8">Get in Touch</h3>
               <div className="flex flex-col gap-6">
-                <a
-                  href="mailto:hello@mayachen.design"
-                  className="group flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  <Mail className="w-5 h-5 text-primary" />
-                  <span className="font-serif text-lg">hello@mayachen.design</span>
-                </a>
-                <a
-                  href="https://linkedin.com/in/mayachen"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  <span className="font-serif text-lg">LinkedIn</span>
-                  <ArrowUpRight className="w-4 h-4 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
-                </a>
-                <a
-                  href="https://dribbble.com/mayachen"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  <span className="font-serif text-lg">Dribbble</span>
-                  <ArrowUpRight className="w-4 h-4 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
-                </a>
-                <a
-                  href="https://twitter.com/mayachen"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  <span className="font-serif text-lg">Twitter</span>
-                  <ArrowUpRight className="w-4 h-4 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
-                </a>
+                {contactLinks.map(({ href, label, text, Icon }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target={href.startsWith("mailto:") ? undefined : "_blank"}
+                    rel={href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+                    className="group flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    <Icon className="w-5 h-5 text-primary shrink-0" />
+                    <span className="font-serif text-lg">{text}</span>
+                    {!href.startsWith("mailto:") && (
+                      <ArrowUpRight className="w-4 h-4 text-primary opacity-0 group-hover:opacity-100 transition-opacity ml-auto" />
+                    )}
+                  </a>
+                ))}
               </div>
             </motion.div>
 
@@ -79,14 +74,14 @@ const Connect = () => {
             >
               <h3 className="font-serif text-2xl text-foreground mb-8">Location</h3>
               <div className="flex items-start gap-3 text-muted-foreground mb-4">
-                <MapPin className="w-5 h-5 text-primary mt-1" />
+                <MapPin className="w-5 h-5 text-primary mt-1 shrink-0" />
                 <div>
-                  <p className="font-serif text-lg">San Francisco, California</p>
-                  <p className="font-serif text-lg">United States</p>
+                  <p className="font-serif text-lg">Gilgit</p>
+                  <p className="font-serif text-lg">Pakistan</p>
                 </div>
               </div>
               <p className="font-serif text-muted-foreground/70 mt-8">
-                Available for remote collaborations worldwide. Open to on-site projects in the Bay Area.
+                Available for remote collaborations worldwide. Based in Gilgit, Pakistan.
               </p>
             </motion.div>
           </div>
@@ -99,13 +94,13 @@ const Connect = () => {
           >
             <h3 className="font-serif text-2xl text-foreground mb-6">Project Inquiries</h3>
             <p className="font-serif text-lg text-muted-foreground leading-relaxed mb-8">
-              Currently accepting select projects for Q2 2026. For project inquiries, please include a brief description of your project, timeline, and budget range.
+              Currently accepting select projects. For project inquiries, please include a brief description of your project, timeline, and budget range.
             </p>
             <a
-              href="mailto:projects@mayachen.design"
+              href="mailto:iamalishannasir@gamil.com"
               className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors font-serif text-lg"
             >
-              projects@mayachen.design
+              iamalishannasir@gamil.com
               <ArrowUpRight className="w-4 h-4" />
             </a>
           </motion.div>
