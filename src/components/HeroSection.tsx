@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import profilePhoto from "@/assets/shan1.jpg";
 
 const HeroSection = () => {
   return (
@@ -12,20 +13,26 @@ const HeroSection = () => {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="heading-display text-6xl sm:text-7xl md:text-8xl lg:text-[7.5rem] xl:text-[8.5rem] leading-[0.95] tracking-tight text-foreground"
           >
-            <span className="block">Ali</span>
-            <span className="block pl-4 lg:pl-8">Shan</span>
+            <span className="block">alishan</span>
           </motion.h1>
         </div>
 
-        {/* Tagline — right side, smaller, aligned to name */}
-        <motion.p
+        {/* Tagline — right side: small square photo + description */}
+        <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-          className="font-serif text-lg sm:text-xl md:text-2xl text-muted-foreground leading-snug max-w-md lg:max-w-sm lg:text-right self-start lg:self-end"
+          className="flex flex-col items-start lg:items-end gap-3 self-start lg:self-end"
         >
-          Front-end developer with experience building products for the web. Based in Pakistan.
-        </motion.p>
+          <img
+            src={profilePhoto}
+            alt="alishan"
+            className="w-30 h-30 sm:w-40 sm:h-40 rounded-md object-cover flex-shrink-0 border border-[hsl(var(--border-default))]"
+          />
+          <p className="font-serif text-lg sm:text-xl md:text-2xl text-muted-foreground leading-snug max-w-md lg:max-w-sm lg:text-right">
+            Front-end developer with experience building products for the web. Based in Pakistan.
+          </p>
+        </motion.div>
       </div>
     </section>
   );

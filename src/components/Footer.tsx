@@ -14,8 +14,8 @@ const Footer = () => {
   return (
     <footer className="w-full bg-background text-foreground border-t border-foreground/10 py-20 px-8">
       <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col items-center justify-center gap-12 relative min-h-[280px]">
-          {/* Let's [photo] work together */}
+        {/* Let's [photo] work together — heading block */}
+        <div className="flex flex-col items-center justify-center gap-8 pb-16">
           <div className="flex flex-col md:flex-row items-center justify-center text-center md:text-left w-full gap-4 md:gap-6">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -32,7 +32,7 @@ const Footer = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.15 }}
-              className="relative w-24 h-24 md:w-32 md:h-32 overflow-hidden  border border-foreground/10 shrink-0"
+              className="relative w-24 h-24 md:w-32 md:h-32 overflow-hidden border border-foreground/10 shrink-0"
             >
               <img
                 src={profileImage}
@@ -61,52 +61,42 @@ const Footer = () => {
           >
             together
           </motion.h2>
-
-          {/* Contact email — bottom left */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="absolute bottom-0 left-0 text-sm md:text-base font-serif text-muted-foreground"
-          >
-            <a
-              href="mailto:iamalishannasir@gamil.com"
-              className="hover:text-primary transition-colors duration-200"
-            >
-              <HoverText text="iamalishannasir@gamil.com" />
-            </a>
-          </motion.div>
-
-          {/* Social links — bottom right */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="absolute bottom-0 right-0"
-          >
-            <div className="flex gap-3">
-              {socialLinks.map((link, i) => (
-                <motion.a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="h-10 w-10 rounded-full border border-foreground/10 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/30 transition-colors duration-200"
-                  whileHover={{ y: -2 }}
-                  initial={{ opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.5 + i * 0.08, duration: 0.4 }}
-                  aria-label={link.label}
-                >
-                  {link.icon}
-                </motion.a>
-              ))}
-            </div>
-          </motion.div>
         </div>
+
+        {/* Contact row — email (left) + social icons (right), always below heading */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-6 border-t border-foreground/10"
+        >
+          <a
+            href="mailto:iamalishannasir@gamil.com"
+            className="text-sm md:text-base font-serif text-muted-foreground hover:text-primary transition-colors duration-200"
+          >
+            <HoverText text="iamalishannasir@gamil.com" />
+          </a>
+          <div className="flex gap-3">
+            {socialLinks.map((link, i) => (
+              <motion.a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="h-10 w-10 rounded-full border border-foreground/10 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/30 transition-colors duration-200"
+                whileHover={{ y: -2 }}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 + i * 0.08, duration: 0.4 }}
+                aria-label={link.label}
+              >
+                {link.icon}
+              </motion.a>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </footer>
   );
