@@ -2,19 +2,7 @@ import { useParams, Navigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { projects } from "@/data/projects";
-
-import projectEcommerce from "@/assets/project-ecommerce.jpg";
-import projectDashboard from "@/assets/project-dashboard.jpg";
-import projectPortfolio from "@/assets/project-portfolio.jpg";
-import projectSocial from "@/assets/project-social.jpg";
-
-const projectImages: Record<string, string> = {
-  "ecommerce-platform": projectEcommerce,
-  "analytics-dashboard": projectDashboard,
-  "portfolio-builder": projectPortfolio,
-  "social-app": projectSocial,
-};
+import { projects, projectImages, projectGallery } from "@/data/projects";
 
 const ProjectDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -23,6 +11,7 @@ const ProjectDetail = () => {
   if (!project) return <Navigate to="/expertise" replace />;
 
   const heroImage = projectImages[project.slug];
+  const gallery = projectGallery[project.slug];
 
   return (
     <div className="min-h-screen bg-background">
@@ -54,9 +43,25 @@ const ProjectDetail = () => {
               initial={{ opacity: 0, scale: 0.97 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-              className="rounded-lg overflow-hidden mb-16"
+              className="rounded-lg overflow-hidden mb-8"
             >
               <img src={heroImage} alt={project.title} className="w-full h-auto object-cover" />
+            </motion.div>
+          )}
+
+          {/* Gallery (additional images after hero) */}
+          {gallery && gallery.length > 1 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
+              className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-16"
+            >
+              {gallery.slice(1).map((src, i) => (
+                <div key={i} className="rounded-lg overflow-hidden border border-foreground/10">
+                  <img src={src} alt={`${project.title} ${i + 2}`} className="w-full h-auto object-cover" />
+                </div>
+              ))}
             </motion.div>
           )}
 

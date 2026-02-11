@@ -5,19 +5,7 @@ import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import CursorImage from "@/components/CursorImage";
-import { projects } from "@/data/projects";
-
-import projectEcommerce from "@/assets/project-ecommerce.jpg";
-import projectDashboard from "@/assets/project-dashboard.jpg";
-import projectPortfolio from "@/assets/project-portfolio.jpg";
-import projectSocial from "@/assets/project-social.jpg";
-
-const projectImages: Record<string, string> = {
-  "ecommerce-platform": projectEcommerce,
-  "analytics-dashboard": projectDashboard,
-  "portfolio-builder": projectPortfolio,
-  "social-app": projectSocial,
-};
+import { projects, projectImages } from "@/data/projects";
 
 const Expertise = () => {
   const [hoveredProject, setHoveredProject] = useState<string | null>(null);
@@ -47,7 +35,7 @@ const Expertise = () => {
             transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             className="font-serif text-xl md:text-2xl text-muted-foreground mb-20 leading-relaxed"
           >
-            A selection of front-end projects I've built — from e-commerce platforms to real-time dashboards.
+            A selection of projects — field service management, e-commerce marketplaces, and HR SaaS.
           </motion.p>
 
           <div className="flex flex-col" onMouseMove={handleMouseMove}>

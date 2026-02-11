@@ -1,43 +1,28 @@
 import { motion } from "framer-motion";
-import heroImage from "@/assets/hero-showcase.jpg";
+import profileImage from "@/assets/shan.jpeg";
 
 const AboutSection = () => {
   return (
-    <section className="w-full">
-      {/* Profile Section with Image */}
-      <div className="grid grid-cols-1 lg:grid-cols-2">
-        {/* Image */}
+    <section className="w-full border-t border-foreground/10">
+      <div className="max-w-3xl mx-auto px-8 py-20">
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="aspect-square lg:aspect-auto bg-foreground overflow-hidden"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col sm:flex-row sm:items-center gap-8"
         >
           <img
-            src={heroImage}
-            alt="Maya Chen"
-            className="w-full h-full object-cover opacity-90"
+            src={profileImage}
+            alt=""
+            className="w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover border border-foreground/10 shrink-0"
           />
-        </motion.div>
-
-        {/* Profile Info */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="bg-primary px-8 md:px-16 py-16 md:py-24 flex flex-col justify-center items-center text-center"
-        >
-          <h3 className="font-serif text-4xl md:text-5xl lg:text-6xl text-primary-foreground mb-4">
-            Maya Chen
-          </h3>
-          <p className="text-sm tracking-widest text-primary-foreground/80 uppercase mb-8">
-            Principal
-          </p>
-          <p className="text-base md:text-lg text-primary-foreground/90 leading-relaxed max-w-md">
-            Maya is a product design specialist with more than 12 years' experience. She brings industry-leading expertise to all stages of creative projects, from initial concepting and strategy, to prototyping, execution and post-launch optimization.
-          </p>
+          <div>
+            <p className="text-xs text-primary tracking-widest uppercase mb-2">About</p>
+            <p className="font-serif text-lg md:text-xl text-foreground leading-relaxed">
+              Front-end developer crafting simple, clear interfaces. Focused on performance, accessibility, and clean architecture — from landing pages to full web applications.
+            </p>
+          </div>
         </motion.div>
       </div>
     </section>

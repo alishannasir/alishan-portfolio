@@ -5,11 +5,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import About from "./pages/About";
-import VerveCase from "./pages/VerveCase";
-import SpotifyCase from "./pages/SpotifyCase";
-import FigmaCase from "./pages/FigmaCase";
-import NotionCase from "./pages/NotionCase";
-import People from "./pages/People";
 import Expertise from "./pages/Expertise";
 import ProjectDetail from "./pages/ProjectDetail";
 import Connect from "./pages/Connect";
@@ -26,11 +21,6 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
-          <Route path="/verve" element={<VerveCase />} />
-          <Route path="/spotify" element={<SpotifyCase />} />
-          <Route path="/figma" element={<FigmaCase />} />
-          <Route path="/notion" element={<NotionCase />} />
-          <Route path="/people" element={<People />} />
           <Route path="/expertise" element={<Expertise />} />
           <Route path="/work/:slug" element={<ProjectDetail />} />
           <Route path="/connect" element={<Connect />} />
