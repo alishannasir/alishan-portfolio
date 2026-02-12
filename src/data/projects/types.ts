@@ -9,4 +9,6 @@ export interface Project {
   techStack: string[];
   highlights: string[];
   details: string[];
+  /** Optional URL to the live site. When set, a "Live" button is shown on the Expertise page. */
+  liveUrl?: string;
 }

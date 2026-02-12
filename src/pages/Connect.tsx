@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ScrollZigzagLine from "@/components/ScrollZigzagLine";
+import WaveImage from "@/components/WaveImage";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 import { ArrowUpRight, Mail, MapPin, Github, Linkedin, Youtube, Globe } from "lucide-react";
 import { shanImages } from "@/data/adventureImages";
@@ -48,7 +49,7 @@ const Connect = () => {
             transition={{ duration: 0.5, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             className="flex items-center gap-4 mb-20"
           >
-            <img
+            <WaveImage
               src={shanImages[3]}
               alt=""
               className="w-20 h-20 rounded-md object-cover border border-foreground/10 shrink-0"

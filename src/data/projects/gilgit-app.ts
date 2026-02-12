@@ -11,6 +11,7 @@ const gilgitApp: Project = {
   year: "2023",
   duration: "10 months",
   techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Stripe", "Google Auth", "React"],
+  liveUrl: "https://gilgit.app/",
   highlights: [
     "Multi-category marketplace with search, location selector, and Sell Now flow",
     "Buyer Requests — post what you’re looking for and get offers from sellers",

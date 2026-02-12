@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ScrollZigzagLine from "@/components/ScrollZigzagLine";
+import WaveImage from "@/components/WaveImage";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 import { projects, projectImages, projectGallery } from "@/data/projects";
 
@@ -47,9 +48,9 @@ const ProjectDetail = () => {
               initial={{ opacity: 0, scale: 0.97 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-              className="rounded-lg overflow-hidden mb-8"
+              className="rounded-lg overflow-hidden mb-8 aspect-video"
             >
-              <img src={heroImage} alt={project.title} className="w-full h-auto object-cover" />
+              <WaveImage src={heroImage} alt={project.title} className="w-full h-full object-cover" />
             </motion.div>
           )}
 
@@ -62,8 +63,8 @@ const ProjectDetail = () => {
               className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-16"
             >
               {gallery.slice(1).map((src, i) => (
-                <div key={i} className="rounded-lg overflow-hidden border border-foreground/10">
-                  <img src={src} alt={`${project.title} ${i + 2}`} className="w-full h-auto object-cover" />
+                <div key={i} className="rounded-lg overflow-hidden border border-foreground/10 aspect-video">
+                  <WaveImage src={src} alt={`${project.title} ${i + 2}`} className="w-full h-full object-cover" />
                 </div>
               ))}
             </motion.div>

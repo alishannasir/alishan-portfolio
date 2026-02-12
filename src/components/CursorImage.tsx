@@ -1,4 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
+import WaveImage from "@/components/WaveImage";
 
 interface CursorImageProps {
   src: string;
@@ -25,7 +26,7 @@ const CursorImage = ({ src, alt, visible, x, y }: CursorImageProps) => {
             height: 220,
           }}
         >
-          <img
+          <WaveImage
             src={src}
             alt={alt}
             className="w-full h-full object-cover"

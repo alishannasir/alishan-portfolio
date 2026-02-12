@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -79,6 +79,18 @@ const Expertise = () => {
                   <p className="font-serif text-muted-foreground leading-relaxed">
                     {project.tagline}
                   </p>
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="inline-flex items-center gap-1.5 text-xs font-medium tracking-wide uppercase text-primary border border-primary/30 hover:bg-primary/10 px-3 py-1.5 rounded transition-colors duration-200 mt-4"
+                    >
+                      Live
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </a>
+                  )}
                 </Link>
               </motion.div>
             ))}

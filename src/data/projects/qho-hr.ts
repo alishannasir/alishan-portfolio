@@ -9,6 +9,7 @@ const qhoHr: Project = {
     "Qho HR (uConnect) is an HR management SaaS product that gives employees a single control center for their work life. The dashboard shows welcome messaging, attendance history, leaves, check-ins, and key metrics. Features include announcements, surveys, holidays, timesheets, attendance, leave management, work schedule, requests, feedback, and account settings with theme and security options.",
   role: "Front-End Developer",
   year: "2024",
+  liveUrl: "https://cloud.quohr.com/",
   duration: "6 months",
   techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Authentication", "React"],
   highlights: [

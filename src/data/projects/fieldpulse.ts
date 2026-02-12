@@ -17,6 +17,7 @@ const fieldpulse: Project = {
     "Solutions by segment (Residential, Commercial, Franchises) and by industry (MEP, Field Service, Equipment)",
     "Dashboard for jobs, clock-in tracking, and conversion metrics",
   ],
+  liveUrl: "https://www.fieldpulse.com/",
   details: [
     "The product serves HVAC-R, electrical, plumbing, garage door, locksmith, property management, appliance repair, commercial equipment, fire and security, contractors, septic, and A/V installation. The UI had to support both segment-based and industry-based navigation with clear dropdowns and consistent patterns.",
     "I worked on the dashboard experience: job cards with status (In Progress, On the way), technician clock-in display, and conversion rate views. The design uses a dark blue background with a subtle grid and clear status indicators (green for in progress, purple for on the way).",

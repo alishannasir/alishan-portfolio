@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ScrollZigzagLine from "@/components/ScrollZigzagLine";
+import WaveImage from "@/components/WaveImage";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 import { shanImages, adventureImages } from "@/data/adventureImages";
+import HoverText from "@/components/HoverText";
 
 const stats = [
   { label: "Years Experience", value: "2+" },
@@ -50,7 +52,7 @@ const About = () => {
                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                 className="shrink-0"
               >
-                <img
+                <WaveImage
                   src={shanImages[0]}
                   alt=""
                   className="w-24 h-24 sm:w-28 sm:h-28 rounded-md object-cover border border-foreground/10"
@@ -63,7 +65,7 @@ const About = () => {
                   transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
                   className="heading-display text-4xl md:text-5xl lg:text-6xl mb-4 leading-tight"
                 >
-                  I craft interfaces that feel alive.
+                  I <HoverText text="craft" /> interfaces that feel alive.
                 </motion.h1>
                 <motion.p
                   initial={{ opacity: 0, y: 12 }}

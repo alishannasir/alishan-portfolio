@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
+import WaveImage from "@/components/WaveImage";
 import { heroImage } from "@/data/adventureImages";
+import HoverText from "@/components/HoverText";
 
 const HeroSection = () => {
   return (
@@ -13,7 +15,7 @@ const HeroSection = () => {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="heading-display text-4xl sm:text-6xl md:text-5xl lg:text-[5rem] xl:text-[6rem] leading-[0.95] tracking-tight text-foreground break-words"
           >
-            <span className="block">alishan</span>
+            <span className="block">ali<HoverText text="shan" forceForeground /></span>
           </motion.h1>
         </div>
 
@@ -24,7 +26,7 @@ const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
           className="flex flex-col items-start lg:items-end gap-4 sm:gap-3 self-start lg:self-end"
         >
-          <img
+          <WaveImage
             src={heroImage}
             alt="alishan"
             className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-md object-cover flex-shrink-0 border border-[hsl(var(--border-default))]"

@@ -1,6 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import ScrollZigzagLine from "@/components/ScrollZigzagLine";
+import WaveImage from "@/components/WaveImage";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 import { loveImages } from "@/data/adventureImages";
 
@@ -16,7 +17,7 @@ const NotFound = () => {
     <div className="flex min-h-screen items-center justify-center bg-muted px-6">
       <ScrollZigzagLine variant="notFound" scrollProgress={scrollProgress} />
       <div className="text-center max-w-md">
-        <img
+        <WaveImage
           src={loveImages[2]}
           alt=""
           className="mx-auto w-24 h-24 rounded-md object-cover border border-foreground/10 mb-6"

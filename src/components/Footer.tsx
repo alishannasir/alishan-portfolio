@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin, Youtube, Globe } from "lucide-react";
 import HoverText from "@/components/HoverText";
-import profileImage from "@/assets/myimage.jpg";
+import WaveImage from "@/components/WaveImage";
+import profileImage from "@/assets/sky.jpg";
 
 const socialLinks = [
   { icon: <Github size={18} />, href: "https://github.com/alishannasir", label: "GitHub" },
@@ -34,7 +35,7 @@ const Footer = () => {
               transition={{ duration: 0.5, delay: 0.15 }}
               className="relative w-24 h-24 md:w-32 md:h-32 overflow-hidden border border-foreground/10 shrink-0"
             >
-              <img
+              <WaveImage
                 src={profileImage}
                 alt=""
                 className="object-cover w-full h-full"

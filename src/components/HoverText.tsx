@@ -21,12 +21,14 @@ function scrambleTick(
 interface HoverTextProps {
   text: string;
   className?: string;
+  /** Force visible text color (e.g. in hero on light mode). Uses CSS variable so theme is respected. */
+  forceForeground?: boolean;
 }
 
 const RESOLVE_DURATION_MS = 500;
 const FRAME_MS = 35;
 
-const HoverText = ({ text, className = "" }: HoverTextProps) => {
+const HoverText = ({ text, className = "", forceForeground = false }: HoverTextProps) => {
   const [displayText, setDisplayText] = useState(text);
   const [isHovered, setIsHovered] = useState(false);
   const startTimeRef = useRef(0);
@@ -54,9 +56,14 @@ const HoverText = ({ text, className = "" }: HoverTextProps) => {
     return () => clearInterval(intervalId);
   }, [isHovered, text]);
 
+  const foregroundColor = "hsl(var(--foreground))";
+  const defaultColorStyle = forceForeground ? { color: foregroundColor } : undefined;
+
   return (
     <motion.span
       className={`inline-flex cursor-default ${className}`}
+      style={defaultColorStyle}
+      initial={forceForeground ? { color: foregroundColor } : undefined}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       whileHover={{ color: "hsl(var(--primary))" }}
@@ -70,7 +77,7 @@ const HoverText = ({ text, className = "" }: HoverTextProps) => {
           <span aria-hidden className="invisible select-none">
             {originalChar}
           </span>
-          <span className="absolute left-0 top-0">
+          <span className="absolute left-0 top-0" style={defaultColorStyle ? { color: "inherit" } : undefined}>
             {displayText[i] ?? originalChar}
           </span>
         </span>
