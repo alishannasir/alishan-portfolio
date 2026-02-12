@@ -11,7 +11,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <ScrollZigzagLine variant="index" scrollProgress={scrollProgress} />
-      <Navigation />
+      <Navigation />      
       <main>
         <HeroSection />
         <ServicesSection />
