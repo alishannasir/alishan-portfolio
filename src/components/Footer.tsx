@@ -12,8 +12,8 @@ const socialLinks = [
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-background text-foreground border-t border-foreground/10 py-20 px-8">
-      <div className="max-w-6xl mx-auto">
+    <footer className="w-full bg-background text-foreground border-t border-foreground/10 py-20 px-6 sm:px-8">
+      <div className="max-w-3xl mx-auto">
         {/* Let's [photo] work together — heading block */}
         <div className="flex flex-col items-center justify-center gap-8 pb-16">
           <div className="flex flex-col md:flex-row items-center justify-center text-center md:text-left w-full gap-4 md:gap-6">
