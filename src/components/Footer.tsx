@@ -61,6 +61,15 @@ const Footer = () => {
           >
             together
           </motion.h2>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="font-serif text-sm text-muted-foreground/80 italic"
+          >
+            Pixels and pictures — both are my love language.
+          </motion.p>
         </div>
 
         {/* Contact row — email (left) + social icons (right), always below heading */}

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import profilePhoto from "@/assets/shan1.jpg";
+import { heroImage } from "@/data/adventureImages";
 
 const HeroSection = () => {
   return (
@@ -25,12 +25,15 @@ const HeroSection = () => {
           className="flex flex-col items-start lg:items-end gap-4 sm:gap-3 self-start lg:self-end"
         >
           <img
-            src={profilePhoto}
+            src={heroImage}
             alt="alishan"
             className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-md object-cover flex-shrink-0 border border-[hsl(var(--border-default))]"
           />
           <p className="font-serif text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground leading-snug max-w-md lg:max-w-sm lg:text-right">
             Front-end developer with experience building products for the web. Based in Pakistan.
+          </p>
+          <p className="font-serif text-sm sm:text-base text-muted-foreground/80 italic max-w-md lg:max-w-sm lg:text-right">
+            Adventure junkie. I turn time into pictures when I'm not turning ideas into pixels.
           </p>
         </motion.div>
       </div>

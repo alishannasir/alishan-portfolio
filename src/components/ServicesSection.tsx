@@ -4,7 +4,7 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { useSectionScrollProgress } from "@/hooks/useSectionScrollProgress";
 import { services } from "@/data/services";
 import { motion, AnimatePresence } from "framer-motion";
-import shan2Image from "@/assets/shan2.jpg";
+import { getAdventureImage } from "@/data/adventureImages";
 
 function useServiceIndex(sectionProgress: number): number {
   const count = services.length;
@@ -177,12 +177,15 @@ export default function ServicesSection() {
               </div>
             </div>
 
-            <div className="hidden lg:flex lg:w-1/2 lg:items-right lg:justify-right lg:py-16">
+            <div className="hidden lg:flex lg:w-1/2 lg:items-right lg:justify-right lg:py-16 flex-col gap-3">
               <img
-                src={shan2Image}
+                src={getAdventureImage(index)}
                 alt=""
                 className="max-w-full max-h-[54vh] w-full h-[54vh] object-contain justify-right items-right object-right"
               />
+              <p className="font-serif text-xs text-muted-foreground/70 lg:text-right italic">
+                Also: chasing light & freezing moments.
+              </p>
             </div>
           </div>
         </div>

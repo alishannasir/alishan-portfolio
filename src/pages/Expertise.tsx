@@ -37,9 +37,17 @@ const Expertise = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="font-serif text-xl md:text-2xl text-muted-foreground mb-20 leading-relaxed"
+            className="font-serif text-xl md:text-2xl text-muted-foreground mb-4 leading-relaxed"
           >
             A selection of projects — field service management, e-commerce marketplaces, and HR SaaS.
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="font-serif text-sm text-muted-foreground/80 italic mb-20"
+          >
+            Building things by day; capturing moments the rest of the time.
           </motion.p>
 
           <div className="flex flex-col" onMouseMove={handleMouseMove}>

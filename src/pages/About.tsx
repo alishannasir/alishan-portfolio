@@ -4,7 +4,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ScrollZigzagLine from "@/components/ScrollZigzagLine";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
-import profileImage from "@/assets/shan.jpeg";
+import { shanImages, adventureImages } from "@/data/adventureImages";
 
 const stats = [
   { label: "Years Experience", value: "2+" },
@@ -51,9 +51,9 @@ const About = () => {
                 className="shrink-0"
               >
                 <img
-                  src={profileImage}
+                  src={shanImages[0]}
                   alt=""
-                  className="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover border border-foreground/10"
+                  className="w-24 h-24 sm:w-28 sm:h-28 rounded-md object-cover border border-foreground/10"
                 />
               </motion.div>
               <div>
@@ -127,6 +127,51 @@ const About = () => {
             >
               I focus on React and TypeScript, performant and accessible UIs, and tools like Tailwind, Framer Motion, and Next.js. I care about design systems, component structure, and front-end craft.
             </motion.p>
+          </div>
+        </section>
+
+        {/* Beyond the screen — adventure & capturing time */}
+        <section className="py-16 px-8 border-t border-foreground/10">
+          <div className="max-w-3xl mx-auto">
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="text-xs text-primary tracking-widest uppercase mb-6"
+            >
+              Beyond the screen
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              className="font-serif text-lg md:text-xl text-foreground leading-relaxed mb-8"
+            >
+              I code by day and chase light by whenever. Adventure in my pocket, time in a frame — building UIs and collecting moments. (Yes, I get lost on purpose.)
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="-mx-8 overflow-x-auto overflow-y-hidden scroll-smooth"
+            >
+              <div className="flex gap-3 sm:gap-4 px-8 pb-2 min-w-max snap-x snap-mandatory scroll-smooth">
+                {adventureImages.map((src, i) => (
+                  <div
+                    key={`${src}-${i}`}
+                    className="flex-shrink-0 w-[72vw] sm:w-[280px] snap-center"
+                  >
+                    <img
+                      src={src}
+                      alt=""
+                      className="aspect-[3/4] w-full rounded-md object-cover border border-foreground/10"
+                    />
+                  </div>
+                ))}
+              </div>
+            </motion.div>
           </div>
         </section>
 

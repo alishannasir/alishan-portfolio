@@ -2,6 +2,7 @@ import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import ScrollZigzagLine from "@/components/ScrollZigzagLine";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
+import { loveImages } from "@/data/adventureImages";
 
 const NotFound = () => {
   const location = useLocation();
@@ -12,11 +13,17 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-muted">
+    <div className="flex min-h-screen items-center justify-center bg-muted px-6">
       <ScrollZigzagLine variant="notFound" scrollProgress={scrollProgress} />
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">404</h1>
-        <p className="mb-4 text-xl text-muted-foreground">Oops! Page not found</p>
+      <div className="text-center max-w-md">
+        <img
+          src={loveImages[2]}
+          alt=""
+          className="mx-auto w-24 h-24 rounded-md object-cover border border-foreground/10 mb-6"
+        />
+        <h1 className="mb-2 text-4xl font-bold">404</h1>
+        <p className="mb-2 text-lg text-muted-foreground">This page went on an adventure.</p>
+        <p className="mb-6 font-serif text-sm text-muted-foreground/80 italic">You can go home though.</p>
         <a href="/" className="text-primary underline hover:text-primary/90">
           Return to Home
         </a>
