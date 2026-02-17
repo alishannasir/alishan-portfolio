@@ -8,7 +8,6 @@ interface CursorImageProps {
   x: number;
   y: number;
 }
-
 const CursorImage = ({ src, alt, visible, x, y }: CursorImageProps) => {
   return (
     <AnimatePresence>

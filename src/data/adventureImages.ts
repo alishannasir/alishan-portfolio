@@ -18,7 +18,6 @@ import sky6 from "@/assets/sky6.jpg";
 export const shanImages = [shan, shan1, shan2, shan3, shan4];
 export const loveImages = [love, love1, love2, love3, love4];
 export const skyImages = [sky, sky1, sky3, sky4, sky5, sky6];
-
 /** All adventure/moment images — shan, love, sky — for carousel and consistent use across the site. */
 export const adventureImages = [...shanImages, ...loveImages, ...skyImages];
 
