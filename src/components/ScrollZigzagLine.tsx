@@ -34,7 +34,6 @@ export default function ScrollZigzagLine({
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-
     const config = getZigzagConfig(variant);
     configRef.current = config;
     const positions = buildZigzagPoints(config);
@@ -85,8 +84,7 @@ export default function ScrollZigzagLine({
       );
       geometry.setDrawRange(0, visibleCount);
       renderer.render(scene, camera);
-    }
-
+    }  
     function loop() {
       render();
       rafRef.current = requestAnimationFrame(loop);

@@ -75,8 +75,7 @@ const Navigation = () => {
           </div>
         </div>
       </div>
-
-      {/* Mobile menu — overlay + panel; visible only when menuOpen on small screens */}
+{/* mobile */}
       <AnimatePresence>
         {menuOpen && (
           <>

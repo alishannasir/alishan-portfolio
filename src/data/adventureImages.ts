@@ -20,7 +20,6 @@ export const loveImages = [love, love1, love2, love3, love4];
 export const skyImages = [sky, sky1, sky3, sky4, sky5, sky6];
 /** All adventure/moment images — shan, love, sky — for carousel and consistent use across the site. */
 export const adventureImages = [...shanImages, ...loveImages, ...skyImages];
-
 /** Hero / primary profile shot (used on home). */
 export const heroImage = shan1;
 
