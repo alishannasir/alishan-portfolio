@@ -18,7 +18,6 @@ const contactLinks = [
 
 const Connect = () => {
   const scrollProgress = useScrollProgress();
-
   return (
     <div className="min-h-screen bg-background">
       <ScrollZigzagLine variant="connect" scrollProgress={scrollProgress} />
