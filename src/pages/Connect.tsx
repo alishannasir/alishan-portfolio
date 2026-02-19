@@ -1,9 +1,7 @@
 import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import ScrollZigzagLine from "@/components/ScrollZigzagLine";
 import WaveImage from "@/components/WaveImage";
-import { useScrollProgress } from "@/hooks/useScrollProgress";
 import { ArrowUpRight, Mail, MapPin, Github, Linkedin, Youtube, Globe } from "lucide-react";
 import { shanImages } from "@/data/adventureImages";
 
@@ -20,10 +18,9 @@ const Connect = () => {
   const scrollProgress = useScrollProgress();
   return (
     <div className="min-h-screen bg-background">
-      <ScrollZigzagLine variant="connect" scrollProgress={scrollProgress} />
       <Navigation />
-      <main className="min-h-screen pt-40 pb-24 px-8">
-        <div className="max-w-3xl mx-auto">
+      <main className="min-h-screen pt-40 pb-24 px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}

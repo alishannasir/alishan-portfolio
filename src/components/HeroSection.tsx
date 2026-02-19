@@ -1,41 +1,45 @@
-import { motion } from "framer-motion";
-import WaveImage from "@/components/WaveImage";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { heroImage } from "@/data/adventureImages";
-import HoverText from "@/components/HoverText";
 
 const HeroSection = () => {
-  return (
-    <section className="min-h-screen flex flex-col justify-center pt-28 pb-16 sm:pt-36 sm:pb-24 px-6 sm:px-8">
-      <div className="max-w-3xl mx-auto w-full flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 sm:gap-12 lg:gap-16">
-        {/* Name — left-aligned, scales for mobile */}
-        <div className="flex flex-col min-w-0">
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="heading-display text-4xl sm:text-6xl md:text-5xl lg:text-[5rem] xl:text-[6rem] leading-[0.95] tracking-tight text-foreground break-words"
-          >
-            <span className="block">ali<HoverText text="shan" forceForeground /></span>
-          </motion.h1>
-        </div>
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const imageY = useTransform(scrollYProgress, [0, 1], [0, 80]);
 
-        {/* Tagline — photo + description; stacked on mobile, right on desktop */}
+  return (
+    <section ref={sectionRef} className="min-h-screen flex flex-col lg:flex-row relative pt-28 pb-16 sm:pt-36 sm:pb-24 px-4 sm:px-6 overflow-hidden">
+      <div className="max-w-7xl mx-auto w-full flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-0">
+        {/* Left: large text that overlaps image on desktop */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="relative z-10 flex-1 lg:-mr-32 xl:-mr-40 flex items-center"
+        >
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl 2xl:text-[6.5rem] font-bold leading-[0.98] tracking-tight text-primary max-w-xl lg:max-w-2xl">
+            Front-end developer with experience building products for the web.
+          </h1>
+        </motion.div>
+
+        {/* Right: image with top/bottom padding + "Based in Pakistan." below */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-          className="flex flex-col items-start lg:items-end gap-4 sm:gap-3 self-start lg:self-end"
+          className="relative lg:w-[55%] xl:w-[52%] flex flex-col items-end gap-4 py-8 lg:py-12"
         >
-          <WaveImage
+          <motion.img
             src={heroImage}
             alt="alishan"
-            className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-md object-cover flex-shrink-0 border border-[hsl(var(--border-default))]"
+            style={{ y: imageY }}
+            className="w-full h-[50vh] min-h-[280px] max-h-[65vh] object-cover object-center rounded-md"
           />
-          <p className="font-serif text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground leading-snug max-w-md lg:max-w-sm lg:text-right">
-            Front-end developer with experience building products for the web. Based in Pakistan.
-          </p>
-          <p className="font-serif text-sm sm:text-base text-muted-foreground/80 italic max-w-md lg:max-w-sm lg:text-right">
-            Adventure junkie. I turn time into pictures when I'm not turning ideas into pixels.
+          <p className="font-serif text-base sm:text-lg md:text-xl text-primary font-medium">
+            Based in Pakistan.
           </p>
         </motion.div>
       </div>
