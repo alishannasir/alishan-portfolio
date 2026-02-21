@@ -16,6 +16,7 @@ export default {
       fontFamily: {
         sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
         serif: ['Playfair Display', 'Georgia', 'serif'],
+        mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -86,6 +87,10 @@ export default {
         "fade-in-up": {
           "0%": { opacity: "0", transform: "translateY(30px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "intro-exit": {
+          "0%": { opacity: "1" },
+          "100%": { opacity: "0" },
         },
       },
       animation: {

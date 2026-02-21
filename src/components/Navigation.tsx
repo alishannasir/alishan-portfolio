@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import ThemeToggle from "@/components/ThemeToggle";
 
 const navLinks = [
   { to: "/", label: "home" },
@@ -11,71 +10,33 @@ const navLinks = [
 ];
 
 const Navigation = () => {
-  const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <motion.nav
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed top-0 left-0 right-0 z-50 bg-background"
-    >
-      <div className="max-w-3xl mx-auto px-6 sm:px-8 py-6 sm:py-8">
-        <div className="flex items-center justify-between gap-4">
-          {/* Mobile: hamburger; Desktop: nav links */}
-          <div className="flex items-center gap-12 text-sm tracking-wide">
-            {/* Hamburger — visible only on small screens */}
-            <button
-              type="button"
-              onClick={() => setMenuOpen((prev) => !prev)}
-              className="md:hidden p-2 -m-2 text-foreground hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
-              aria-label={menuOpen ? "Close menu" : "Open menu"}
-              aria-expanded={menuOpen}
-            >
-              {menuOpen ? (
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="18" y1="6" x2="6" y2="18" />
-                  <line x1="6" y1="6" x2="18" y2="18" />
-                </svg>
-              ) : (
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="3" y1="6" x2="21" y2="6" />
-                  <line x1="3" y1="12" x2="21" y2="12" />
-                  <line x1="3" y1="18" x2="21" y2="18" />
-                </svg>
-              )}
-            </button>
-            {/* Nav links — hidden on small screens, visible from md up */}
-            <div className="hidden md:flex items-center gap-8 lg:gap-12">
-              {navLinks.map(({ to, label }) => (
-                <Link key={to} to={to} className="nav-link">
-                  {label}
-                </Link>
-              ))}
-            </div>
-          </div>
+    <>
+      {/* Hamburger trigger — fixed top-left when menu closed */}
+      {!menuOpen ? (
+        <motion.button
+          type="button"
+          onClick={() => setMenuOpen(true)}
+          className="fixed top-6 left-6 sm:top-8 sm:left-8 z-[60] p-2 -m-2 text-foreground hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
+          aria-label="Open menu"
+          aria-expanded={menuOpen}
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </motion.button>
+      ) : null}
 
-          {/* Right: theme toggle + back button */}
-          <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
-            <ThemeToggle />
-            <button
-              type="button"
-              onClick={() => navigate(-1)}
-              className="p-2 -m-2 text-primary hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
-              aria-label="Go back"
-            >
-              <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 sm:w-10 sm:h-10">
-                <line x1="8" y1="8" x2="32" y2="32" stroke="currentColor" strokeWidth="2"/>
-                <line x1="32" y1="8" x2="8" y2="32" stroke="currentColor" strokeWidth="2"/>
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-{/* mobile */}
+      {/* Full-screen overlay menu */}
       <AnimatePresence>
         {menuOpen && (
           <>
@@ -84,34 +45,72 @@ const Navigation = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="fixed inset-0 top-20 z-40 bg-foreground/10 backdrop-blur-sm md:hidden"
+              transition={{ duration: 0.25 }}
+              className="fixed inset-0 z-50 bg-background/95 backdrop-blur-sm"
               onClick={closeMenu}
             />
             <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="fixed left-0 right-0 top-20 z-50 border-b border-border bg-background px-6 py-6 md:hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="fixed inset-0 z-50 pointer-events-none"
             >
-              <nav className="flex flex-col gap-6" aria-label="Mobile navigation">
-                {navLinks.map(({ to, label }) => (
-                  <Link
-                    key={to}
-                    to={to}
-                    className="nav-link text-base py-2"
-                    onClick={closeMenu}
+              <div className="h-full flex items-center justify-between px-8 sm:px-12 md:px-16 lg:px-24 pointer-events-auto">
+                {/* Left: vertical nav links */}
+                <nav
+                  className="flex flex-col gap-4 sm:gap-6"
+                  aria-label="Main navigation"
+                >
+                  {navLinks.map(({ to, label }) => (
+                    <Link
+                      key={to}
+                      to={to}
+                      onClick={closeMenu}
+                      className="text-primary font-bold text-sm sm:text-base tracking-[0.2em] uppercase hover:opacity-80 transition-opacity"
+                    >
+                      {label}
+                    </Link>
+                  ))}
+                </nav>
+
+                {/* Center: cross — closes menu */}
+                <button
+                  type="button"
+                  onClick={closeMenu}
+                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-3 -m-3 text-primary hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
+                  aria-label="Close menu"
+                >
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                  </svg>
+                </button>
+
+                {/* Right: Get in Touch — vertical text (reads bottom to top) + circular arrow */}
+                <Link
+                  to="/connect"
+                  onClick={closeMenu}
+                  className="flex flex-col items-center gap-4 group"
+                >
+                  <span
+                    className="text-primary font-bold text-sm sm:text-base tracking-[0.2em] uppercase hover:opacity-80 transition-opacity"
+                    style={{ writingMode: "vertical-rl", transform: "rotate(180deg)", textOrientation: "mixed" }}
                   >
-                    {label}
-                  </Link>
-                ))}
-              </nav>
+                    get in touch
+                  </span>
+                  <span className="w-10 h-10 rounded-full border-2 border-primary flex items-center justify-center text-primary group-hover:opacity-80 transition-opacity shrink-0">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="rotate-180" aria-hidden>
+                      <path d="M15 18l-6-6 6-6" />
+                    </svg>
+                  </span>
+                </Link>
+              </div>
             </motion.div>
           </>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </>
   );
 };
 

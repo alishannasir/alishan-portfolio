@@ -4,15 +4,12 @@ import { ArrowUpRight, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import ScrollZigzagLine from "@/components/ScrollZigzagLine";
-import { useScrollProgress } from "@/hooks/useScrollProgress";
 import CursorImage from "@/components/CursorImage";
 import { projects, projectImages } from "@/data/projects";
 
 const Expertise = () => {
   const [hoveredProject, setHoveredProject] = useState<string | null>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const scrollProgress = useScrollProgress();
 
   const handleMouseMove = (e: React.MouseEvent) => {
     setMousePos({ x: e.clientX, y: e.clientY });
@@ -20,10 +17,9 @@ const Expertise = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <ScrollZigzagLine variant="expertise" scrollProgress={scrollProgress} />
       <Navigation />
-      <main className="min-h-screen pt-40 pb-24 px-8">
-        <div className="max-w-3xl mx-auto">
+      <main className="min-h-screen pt-40 pb-24 px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
