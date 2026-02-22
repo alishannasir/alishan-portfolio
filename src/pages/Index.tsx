@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
+import StrategySection from "@/components/StrategySection";
 import Footer from "@/components/Footer";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 
@@ -12,6 +13,7 @@ const Index = () => {
       <Navigation />      
       <main>
         <HeroSection />
+        <StrategySection />
         <ServicesSection />
       </main>
       <Footer />
