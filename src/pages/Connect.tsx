@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useScrollProgress } from "@/hooks/useScrollProgress";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import WaveImage from "@/components/WaveImage";

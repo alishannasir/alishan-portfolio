@@ -1,13 +1,14 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, ExternalLink } from "lucide-react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import CursorImage from "@/components/CursorImage";
 import { projects, projectImages } from "@/data/projects";
 
 const Expertise = () => {
+  const navigate = useNavigate();
   const [hoveredProject, setHoveredProject] = useState<string | null>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
@@ -55,8 +56,11 @@ const Expertise = () => {
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.5, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
               >
-                <Link
-                  to={`/work/${project.slug}`}
+                <div
+                  role="link"
+                  tabIndex={0}
+                  onClick={() => navigate(`/work/${project.slug}`)}
+                  onKeyDown={(e) => e.key === "Enter" && navigate(`/work/${project.slug}`)}
                   className="group border-b border-foreground/10 py-10 block cursor-pointer hover:bg-[hsl(var(--surface-active))] transition-colors duration-200 px-4 -mx-4"
                   onMouseEnter={() => setHoveredProject(project.slug)}
                   onMouseLeave={() => setHoveredProject(null)}
@@ -87,7 +91,7 @@ const Expertise = () => {
                       <ExternalLink className="w-3.5 h-3.5" />
                     </a>
                   )}
-                </Link>
+                </div>
               </motion.div>
             ))}
           </div>
