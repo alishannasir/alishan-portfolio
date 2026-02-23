@@ -73,7 +73,6 @@ const Navigation = () => {
                     </Link>
                   ))}
                 </nav>
-
                 {/* Center: cross — closes menu */}
                 <button
                   type="button"
