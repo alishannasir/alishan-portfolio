@@ -32,9 +32,11 @@ function WorkThumb({
   parallaxStrength?: number;
   imageSrc: string | undefined;
 }) {
-  const offsetX = -cursorX * parallaxStrength;
-  const offsetY = -cursorY * (parallaxStrength * 0.7);
-  const scale = isDimmed ? 0.95 : 1;
+  const effectiveStrength = parallaxStrength ?? 28;
+  const offsetX = cursorX * effectiveStrength;
+  const offsetY = cursorY * (effectiveStrength * 0.7);
+
+  const scale = isHovered ? 1.08 : isDimmed ? 0.9 : 1;
 
   const Wrapper = href ? Link : "div";
   const wrapperProps =
@@ -59,7 +61,7 @@ function WorkThumb({
           isHovered && "opacity-100"
         )}
         animate={{ x: offsetX, y: offsetY, scale }}
-        transition={{ type: "spring", stiffness: 70, damping: 20, mass: 0.45 }}
+        transition={{ type: "spring", stiffness: 55, damping: 18, mass: 0.55 }}
       >
         {imageSrc ? (
           <WaveImage src={imageSrc} alt={title} className="w-full h-full object-cover" />
@@ -89,8 +91,6 @@ export default function SelectedWorkSection() {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [cursor, setCursor] = useState({ x: 0, y: 0 });
 
-  const activeProject = hoveredId ? projects.find((p) => p.slug === hoveredId) : null;
-
   const projectThumbs = projects.map((project, index) => ({
     kind: "project" as const,
     id: project.slug,
@@ -108,13 +108,26 @@ export default function SelectedWorkSection() {
 
   const allThumbs = [...projectThumbs, ...duplicateThumbs];
 
-  const layout: { top: string; left: string; width: string; parallax: number }[] = [
-    { top: "0%", left: "10%", width: "40%", parallax: 34 },
-    { top: "4%", left: "54%", width: "34%", parallax: 30 },
-    { top: "40%", left: "8%", width: "40%", parallax: 28 },
-    { top: "44%", left: "56%", width: "32%", parallax: 24 },
-    { top: "78%", left: "14%", width: "34%", parallax: 22 },
-    { top: "82%", left: "58%", width: "30%", parallax: 20 },
+  const layout: {
+    top: string;
+    left: string;
+    width: string;
+    parallax: number;
+    dirX: 1 | -1;
+    dirY: 1 | -1;
+  }[] = [
+    // 1: follows mouse, large parallax
+    { top: "0%", left: "10%", width: "40%", parallax: 40, dirX: 1, dirY: 1 },
+    // 2: opposite X, subtle Y
+    { top: "4%", left: "54%", width: "34%", parallax: 32, dirX: -1, dirY: 1 },
+    // 3: opposite Y
+    { top: "40%", left: "8%", width: "40%", parallax: 30, dirX: 1, dirY: -1 },
+    // 4: opposite both
+    { top: "44%", left: "56%", width: "32%", parallax: 26, dirX: -1, dirY: -1 },
+    // 5: gentle follow
+    { top: "78%", left: "14%", width: "34%", parallax: 24, dirX: 1, dirY: 1 },
+    // 6: gentle opposite X
+    { top: "82%", left: "58%", width: "30%", parallax: 22, dirX: -1, dirY: 1 },
   ];
 
   return (
@@ -142,7 +155,8 @@ export default function SelectedWorkSection() {
         >
           <div className="relative min-h-[820px] md:min-h-[880px] lg:min-h-[920px] max-w-5xl mx-auto">
             {allThumbs.map((thumb, index) => {
-              const config = layout[index] ?? layout[layout.length - 1];
+              const base = layout[index] ?? layout[layout.length - 1];
+              const config = base;
               const id = thumb.id;
               const isHovered = hoveredId === id;
               const isDimmed = !!hoveredId && hoveredId !== id;
@@ -166,8 +180,8 @@ export default function SelectedWorkSection() {
                     isDimmed={isDimmed}
                     onEnter={() => setHoveredId(id)}
                     onLeave={() => setHoveredId(null)}
-                    cursorX={cursor.x}
-                    cursorY={cursor.y}
+                    cursorX={cursor.x * config.dirX}
+                    cursorY={cursor.y * config.dirY}
                     parallaxStrength={config.parallax}
                     imageSrc={thumb.imageSrc}
                   />
@@ -175,29 +189,6 @@ export default function SelectedWorkSection() {
               );
             })}
           </div>
-
-          {activeProject && (
-            <div className="mt-14 w-full md:w-[60%]">
-              <h3 className="text-primary text-xs tracking-widest uppercase mb-4">
-                IMPACT
-              </h3>
-              {activeProject.tagline && (
-                <p className="font-serif text-sm sm:text-base text-foreground mb-4">
-                  {activeProject.tagline}
-                </p>
-              )}
-              {activeProject.highlights && activeProject.highlights.length > 0 && (
-                <ul className="space-y-2 text-xs sm:text-sm font-medium text-primary uppercase tracking-wide">
-                  {activeProject.highlights.map((item) => (
-                    <li key={item} className="flex items-center gap-2">
-                      <span className="text-primary">→</span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          )}
         </div>
       </div>
     </section>
