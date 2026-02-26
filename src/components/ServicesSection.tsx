@@ -60,7 +60,6 @@ function CircleCounter({ current, total }: { current: number; total: number }) {
     </div>
   );
 }
-
 function ServicesThreeBackground({ className }: { className?: string }) {
   const { theme } = useTheme();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -139,7 +138,6 @@ function ServicesThreeBackground({ className }: { className?: string }) {
 
   return <div ref={containerRef} className={className} aria-hidden />;
 }
-
 export default function ServicesSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const sectionProgress = useSectionScrollProgress(sectionRef);
