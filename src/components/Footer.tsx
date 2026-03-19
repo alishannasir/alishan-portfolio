@@ -50,7 +50,6 @@ const Footer = () => {
               <HoverText text="work" />
             </motion.h2>
           </div>
-
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
