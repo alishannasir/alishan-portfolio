@@ -70,7 +70,6 @@ const Footer = () => {
             Pixels and pictures — both are my love language.
           </motion.p>
         </div>
-
         {/* Contact row — email (left) + social icons (right), always below heading */}
         <motion.div
           initial={{ opacity: 0 }}
