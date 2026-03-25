@@ -1,21 +1,19 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import ScrollZigzagLine from "@/components/ScrollZigzagLine";
+import Navigation from "@/components/Navigation";
 import WaveImage from "@/components/WaveImage";
-import { useScrollProgress } from "@/hooks/useScrollProgress";
 import { loveImages } from "@/data/adventureImages";
 
 const NotFound = () => {
   const location = useLocation();
-  const scrollProgress = useScrollProgress();
 
   useEffect(() => {
     console.error("404 Error: User attempted to access non-existent route:", location.pathname);
   }, [location.pathname]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-muted px-6">
-      <ScrollZigzagLine variant="notFound" scrollProgress={scrollProgress} />
+    <div className="flex min-h-screen items-center justify-center bg-muted px-4 sm:px-6">
+      <Navigation />
       <div className="text-center max-w-md">
         <WaveImage
           src={loveImages[2]}

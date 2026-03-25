@@ -1,5 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -139,7 +140,7 @@
   }
   
   .section-container {
-    @apply max-w-4xl mx-auto px-8 py-32;
+    @apply max-w-7xl mx-auto px-4 sm:px-6 py-32;
   }
   
   .body-text {

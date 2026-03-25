@@ -60,7 +60,6 @@ function CircleCounter({ current, total }: { current: number; total: number }) {
     </div>
   );
 }
-
 function ServicesThreeBackground({ className }: { className?: string }) {
   const { theme } = useTheme();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -139,7 +138,6 @@ function ServicesThreeBackground({ className }: { className?: string }) {
 
   return <div ref={containerRef} className={className} aria-hidden />;
 }
-
 export default function ServicesSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const sectionProgress = useSectionScrollProgress(sectionRef);
@@ -155,7 +153,7 @@ export default function ServicesSection() {
     >
       <div className="sticky top-0 h-screen w-full flex overflow-hidden items-center justify-center">
         <ServicesThreeBackground className="absolute inset-0 z-0 pointer-events-none" />
-        <div className="relative z-10 max-w-3xl mx-auto px-6 sm:px-8 w-full h-full flex flex-col justify-around items-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full h-full flex flex-col justify-around items-center">
           <div className="flex-1 min-h-0 flex flex-col lg:flex-row items-center justify-center w-full">
             <div className="flex-1 min-w-0 flex flex-col justify-center lg:pr-8">
               <AnimatePresence mode="wait">
