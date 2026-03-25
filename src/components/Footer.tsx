@@ -10,7 +10,6 @@ const socialLinks = [
   { icon: <Youtube size={18} />, href: "https://www.youtube.com/@alishan0206", label: "YouTube" },
   { icon: <Globe size={18} />, href: "https://www.upwork.com/freelancers/~01108fa2a3313a6ad2", label: "Upwork" },
 ];
-
 const Footer = () => {
   return (
     <footer className="w-full bg-background text-foreground border-t border-foreground/10 py-20 px-4 sm:px-6">
@@ -51,7 +50,6 @@ const Footer = () => {
               <HoverText text="work" />
             </motion.h2>
           </div>
-
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -71,7 +69,6 @@ const Footer = () => {
             Pixels and pictures — both are my love language.
           </motion.p>
         </div>
-
         {/* Contact row — email (left) + social icons (right), always below heading */}
         <motion.div
           initial={{ opacity: 0 }}
