@@ -35,16 +35,13 @@ const values = [
 ];
 
 const About = () => {
-  const scrollProgress = useScrollProgress();
-
   return (
     <div className="min-h-screen bg-background">
-      <ScrollZigzagLine variant="about" scrollProgress={scrollProgress} />
       <Navigation />
       <main className="min-h-screen">
         {/* Hero: small profile + headline */}
-        <section className="pt-48 sm:pt-52 pb-16 px-8">
-          <div className="max-w-3xl mx-auto">
+        <section className="pt-48 sm:pt-52 pb-16 px-4 sm:px-6">
+          <div className="max-w-7xl mx-auto">
             <div className="flex flex-col sm:flex-row sm:items-start gap-8 sm:gap-10">
               <motion.div
                 initial={{ opacity: 0, scale: 0.96 }}
@@ -81,8 +78,8 @@ const About = () => {
         </section>
 
         {/* Stats */}
-        <section className="py-16 px-8 border-t border-foreground/10">
-          <div className="max-w-3xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+        <section className="py-16 px-4 sm:px-6 border-t border-foreground/10">
+          <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {stats.map((stat, i) => (
               <motion.div
                 key={stat.label}
@@ -101,8 +98,8 @@ const About = () => {
         </section>
 
         {/* Story */}
-        <section className="py-16 px-8 border-t border-foreground/10">
-          <div className="max-w-3xl mx-auto">
+        <section className="py-16 px-4 sm:px-6 border-t border-foreground/10">
+          <div className="max-w-7xl mx-auto">
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -133,8 +130,8 @@ const About = () => {
         </section>
 
         {/* Beyond the screen — adventure & capturing time */}
-        <section className="py-16 px-8 border-t border-foreground/10">
-          <div className="max-w-3xl mx-auto">
+        <section className="py-16 px-4 sm:px-6 border-t border-foreground/10">
+          <div className="max-w-7xl mx-auto">
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -157,9 +154,9 @@ const About = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="-mx-8 overflow-x-auto overflow-y-hidden scroll-smooth"
+              className="-mx-4 sm:-mx-6 overflow-x-auto overflow-y-hidden scroll-smooth"
             >
-              <div className="flex gap-3 sm:gap-4 px-8 pb-2 min-w-max snap-x snap-mandatory scroll-smooth">
+              <div className="flex gap-3 sm:gap-4 px-4 sm:px-6 pb-2 min-w-max snap-x snap-mandatory scroll-smooth">
                 {adventureImages.map((src, i) => (
                   <div
                     key={`${src}-${i}`}
@@ -178,8 +175,8 @@ const About = () => {
         </section>
 
         {/* Values */}
-        <section className="py-16 px-8 border-t border-foreground/10">
-          <div className="max-w-3xl mx-auto">
+        <section className="py-16 px-4 sm:px-6 border-t border-foreground/10">
+          <div className="max-w-7xl mx-auto">
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -209,8 +206,8 @@ const About = () => {
         </section>
 
         {/* CTA */}
-        <section className="py-20 px-8 border-t border-foreground/10">
-          <div className="max-w-3xl mx-auto text-center">
+        <section className="py-20 px-4 sm:px-6 border-t border-foreground/10">
+          <div className="max-w-7xl mx-auto text-center">
             <motion.h2
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
