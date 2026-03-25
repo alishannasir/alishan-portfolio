@@ -1,6 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
 import WaveImage from "@/components/WaveImage";
-
 interface CursorImageProps {
   src: string;
   alt: string;
